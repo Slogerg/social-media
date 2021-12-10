@@ -21,3 +21,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/social', [App\Http\Controllers\SocialController::class, 'index'])->name('social');
+
+Route::get('/friends',[\App\Http\Controllers\FriendController::class,'index'])->name('friends');
+Route::post('/addFriend',[\App\Http\Controllers\FriendController::class,'addFriend'])->name('addFriend');
+Route::delete('/removeFriend',[\App\Http\Controllers\FriendController::class,'removeFriend'])->name('removeFriend');
