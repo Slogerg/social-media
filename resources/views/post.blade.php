@@ -22,15 +22,15 @@
                         <span class="nav_name">Новини</span> </a>
                     <a href="{{route('friends')}}" class="nav_link">
                         <i class='bx bx-user nav_icon'></i>
-                        <span class="nav_name active">Друзі</span> </a>
+                        <span class="nav_name">Друзі</span> </a>
                     {{--                <a href="#" class="nav_link">--}}
                     {{--                    <i class='bx bx-message-square-detail nav_icon'></i>--}}
                     {{--                    <span class="nav_name">Messages</span> </a>--}}
                     {{--                <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span--}}
                     {{--                        class="nav_name">Bookmark</span> </a>--}}
-                    <a href="{{route('post.show',\Illuminate\Support\Facades\Auth::id())}}" class="nav_link"> <i
+                    <a href="{{route('post.show',\Illuminate\Support\Facades\Auth::id())}}" class="nav_link active"> <i
                             class='bx bx-folder nav_icon'></i>
-                        <span class="nav_name">Мої пости</span> </a>
+                        <span class="nav_name active">Мої пости</span> </a>
                     {{--                <a href="#" class="nav_link">--}}
                     {{--                    <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a></div>--}}
                 </div>
@@ -87,20 +87,20 @@
         <div class="card-deck">
 
             @foreach($suggested as $item)
-            <div class="card">
+                <div class="card">
 
-                <div class="card-body">
-                    <h5 class="card-title">{{$item->name}}</h5>
-                    <p class="card-text">{{$item->email}}</p>
-                    <p class="card-text"><small class="text-muted">Зареєстрований {{$item->created_at}}</small></p>
-                    <form action="{{route('addFriend')}}" method="POST">
-                        @csrf
-                        <input type="text" name="user_id" hidden value="{{$item->id}}">
-                        <button type = 'submit'>Додати</button>
-                    </form>
+                    <div class="card-body">
+                        <h5 class="card-title">{{$item->name}}</h5>
+                        <p class="card-text">{{$item->email}}</p>
+                        <p class="card-text"><small class="text-muted">Зареєстрований {{$item->created_at}}</small></p>
+                        <form action="{{route('addFriend')}}" method="POST">
+                            @csrf
+                            <input type="text" name="user_id" hidden value="{{$item->id}}">
+                            <button type = 'submit'>Додати</button>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <br>
+                <br>
             @endforeach
 
         </div>

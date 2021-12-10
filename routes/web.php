@@ -25,3 +25,7 @@ Route::get('/social', [App\Http\Controllers\SocialController::class, 'index'])->
 Route::get('/friends',[\App\Http\Controllers\FriendController::class,'index'])->name('friends');
 Route::post('/addFriend',[\App\Http\Controllers\FriendController::class,'addFriend'])->name('addFriend');
 Route::delete('/removeFriend',[\App\Http\Controllers\FriendController::class,'removeFriend'])->name('removeFriend');
+
+Route::resource('post',\App\Http\Controllers\PostController::class);
+
+Route::get('/user/{$id}',[\App\Http\Controllers\UserController::class,'getByUser'])->name('getByUser');

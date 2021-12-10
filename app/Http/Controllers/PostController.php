@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class MyPostController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +15,7 @@ class MyPostController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -45,7 +47,7 @@ class MyPostController extends Controller
      */
     public function show($id)
     {
-        //
+
     }
 
     /**

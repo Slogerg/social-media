@@ -38,6 +38,6 @@ class FriendController extends Controller
         $id = Auth::id();
         DB::table('users_related')->where('related_id',$request->user_id)->where('user_id',$id)->delete();
         return redirect()->route('friends');
-
     }
+
 }
