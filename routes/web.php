@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('home');
 });
 
 Auth::routes();
@@ -26,6 +26,6 @@ Route::get('/friends',[\App\Http\Controllers\FriendController::class,'index'])->
 Route::post('/addFriend',[\App\Http\Controllers\FriendController::class,'addFriend'])->name('addFriend');
 Route::delete('/removeFriend',[\App\Http\Controllers\FriendController::class,'removeFriend'])->name('removeFriend');
 
-Route::resource('post',\App\Http\Controllers\PostController::class);
+Route::resource('posts',\App\Http\Controllers\PostController::class);
 
-Route::get('/user/{$id}',[\App\Http\Controllers\UserController::class,'getByUser'])->name('getByUser');
+Route::get('/user/{id}',[\App\Http\Controllers\FriendController::class,'getByUser'])->name('getByUser.single');

@@ -15,6 +15,8 @@ class PostController extends Controller
      */
     public function index()
     {
+        $paginator = Post::where('user_id',Auth::id())->get();
+        return view('admin.index',compact('paginator'));
 
     }
 
@@ -25,7 +27,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        $item = new Post();
+        return view('admin.edit', compact('item'));
     }
 
     /**
@@ -36,7 +39,9 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $data = $request->input();
+        (new Post())->create($data);
+        return redirect()->route('posts.index');
     }
 
     /**
@@ -58,7 +63,8 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $item = Post::where('id',$id)->first();
+        return view('admin.edit', compact('item'));
     }
 
     /**
@@ -70,7 +76,10 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $item = Post::where('id',$id)->first();
+
+        $item->update($data);
     }
 
     /**
@@ -81,6 +90,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $item = Post::where('id',$id)->first();
+        $item->forceDelete();
+        return redirect()->route('posts.index');
+
     }
 }

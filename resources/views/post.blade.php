@@ -28,9 +28,11 @@
                     {{--                    <span class="nav_name">Messages</span> </a>--}}
                     {{--                <a href="#" class="nav_link"> <i class='bx bx-bookmark nav_icon'></i> <span--}}
                     {{--                        class="nav_name">Bookmark</span> </a>--}}
-                    <a href="{{route('post.show',\Illuminate\Support\Facades\Auth::id())}}" class="nav_link active"> <i
-                            class='bx bx-folder nav_icon'></i>
-                        <span class="nav_name active">Мої пости</span> </a>
+                    @if(\Illuminate\Support\Facades\Auth::id())
+                        <a href="{{route('getByUser.single',\Illuminate\Support\Facades\Auth::id())}}" class="nav_link">
+                            <i class='bx bx-folder nav_icon'></i>
+                            <span class="nav_name">Мої пости</span> </a>
+                    @endif
                     {{--                <a href="#" class="nav_link">--}}
                     {{--                    <i class='bx bx-bar-chart-alt-2 nav_icon'></i> <span class="nav_name">Stats</span> </a></div>--}}
                 </div>

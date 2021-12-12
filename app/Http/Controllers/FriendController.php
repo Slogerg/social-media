@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,4 +41,10 @@ class FriendController extends Controller
         return redirect()->route('friends');
     }
 
+    public function getByUser($id)
+    {
+        $posts = Post::where('user_id',$id)->get();
+        $user = User::where('id',$id)->first();
+        return view('user-posts',['items' => $posts, 'user' => $user]);
+    }
 }
