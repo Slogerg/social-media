@@ -67,7 +67,7 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <h5 class="card-title">{{$item->name}}</h5>
+                        <h5 class="card-title"><a href="{{route('getByUser.single',$item->id)}}">{{$item->name}}</a></h5>
                         <p class="card-text">{{$item->email}}</p>
                         <p class="card-text"><small class="text-muted">Зареєстрований {{$item->created_at}}</small></p>
                         <form action="{{route('removeFriend')}}" method="POST">
@@ -93,7 +93,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <h5 class="card-title">{{$item->name}}</h5>
+                    <h5 class="card-title"><a href="{{route('getByUser.single',$item->id)}}">{{$item->name}}</a></h5>
                     <p class="card-text">{{$item->email}}</p>
                     <p class="card-text"><small class="text-muted">Зареєстрований {{$item->created_at}}</small></p>
                     <form action="{{route('addFriend')}}" method="POST">

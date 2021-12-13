@@ -13,14 +13,18 @@ class FriendController extends Controller
     public function index()
     {
         $id = Auth::id();
-//        $users = DB::select("SELECT * FROM users_related WHERE user_id = $id");
+        $allUsers = User::query()->where('id','!=',$id)->get();
         $related = DB::table('users_related')->where('user_id', $id)->get();
+        $notRelated = DB::table('users_related')->where('user_id', $id)->get();
         $users = collect();
+        $suggested = collect();
         foreach ($related as $user) {
             $users->push(User::query()->where('id',$user->related_id)->first());
         }
-
-        $suggested = User::query()->where('id','!=',Auth::id())->get();
+        $suggested = $allUsers->diff($users);
+//        dd($users->diffKeys($allUsers));
+//        $suggested = User::query()->where('id','!=',Auth::id())->get();
+//        $suggested = DB::table('users_related')->where('user_id', $id)->get();
         return view('friends',[
             'suggested' => $suggested,
             'users'     => $users,
