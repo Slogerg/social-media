@@ -17,10 +17,10 @@
             <div><a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Українські друзі</span>
                 </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link active">
+                    <a href="{{route('news')}}" class="nav_link active">
                         <i class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Новини</span> </a>
-                    <a href="#" class="nav_link">
+                    <a href="{{route('friends')}}" class="nav_link">
                         <i class='bx bx-user nav_icon'></i>
                         <span class="nav_name">Друзі</span> </a>
                     {{--                <a href="#" class="nav_link">--}}
@@ -51,7 +51,45 @@
     </div>
     <!--Container Main start-->
     <div class="height-100 bg-light">
-        <h4>Main Components</h4>
+        <div class="container">
+            <div class="row">
+                <!-- Blog entries-->
+                <div class="col-md-8">
+                    <h1 class="my-4">
+                        Статті блогу
+
+                    </h1>
+
+                    @foreach($items as $item)
+
+                        <div class="card mb-4">
+                            @if($item->image)
+                                <img class="img-fluid rounded" src="{{$item->img}}" alt="">
+                            @else
+                                <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="Card image cap" />
+                            @endif
+                            <div class="card-body">
+                                <h2 class="card-title">{{$item->title}}</h2>
+                                <p class="card-title">by {{$item->user->name}}</p>
+
+                                <a class="btn btn-primary" href="{{route('posts.show',$item->id)}}">Переглянути →</a>
+                            </div>
+                            <div class="card-footer text-muted">
+                                {{$item->created_at}}
+
+                            </div>
+                        </div>
+
+                    @endforeach
+                </div>
+
+                <div class="col-md-4">
+                    <!-- Side widget-->
+                    <h5 class="card-header"><a href="{{route('posts.index')}}"><button class="btn btn-primary">Створити пост</button></a></h5>
+{{--                    <h5 class="card-header"><a href="{{route('posts.index')}}"><button class="btn btn-primary">Створити пост</button></a></h5>--}}
+                </div>
+            </div>
+        </div>
     </div>
     <!--Container Main end-->
 @endsection

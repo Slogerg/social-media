@@ -17,7 +17,7 @@
             <div><a href="#" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span class="nav_logo-name">Українські друзі</span>
                 </a>
                 <div class="nav_list">
-                    <a href="#" class="nav_link">
+                    <a href="{{route('news')}}" class="nav_link">
                         <i class='bx bx-grid-alt nav_icon'></i>
                         <span class="nav_name">Новини</span> </a>
                     <a href="{{route('friends')}}" class="nav_link">

@@ -15,9 +15,7 @@ class FriendController extends Controller
         $id = Auth::id();
         $allUsers = User::query()->where('id','!=',$id)->get();
         $related = DB::table('users_related')->where('user_id', $id)->get();
-        $notRelated = DB::table('users_related')->where('user_id', $id)->get();
         $users = collect();
-        $suggested = collect();
         foreach ($related as $user) {
             $users->push(User::query()->where('id',$user->related_id)->first());
         }

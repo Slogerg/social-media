@@ -66,11 +66,10 @@
                         Статті блогу
 
                     </h1>
-
                     @foreach($items as $item)
 
                             <div class="card mb-4">
-                                @if($item->img)
+                                @if($item->image)
                                     <img class="img-fluid rounded" src="{{$item->img}}" alt="">
                                 @else
                                     <img class="card-img-top" src="https://via.placeholder.com/750x300" alt="Card image cap" />

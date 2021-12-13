@@ -29,3 +29,4 @@ Route::delete('/removeFriend',[\App\Http\Controllers\FriendController::class,'re
 Route::resource('posts',\App\Http\Controllers\PostController::class);
 
 Route::get('/user/{id}',[\App\Http\Controllers\FriendController::class,'getByUser'])->name('getByUser.single');
+Route::get('/news',[\App\Http\Controllers\NewsController::class,'index'])->name('news');
